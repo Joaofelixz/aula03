@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Listarprodutos from "../components/ListarProdutos";
+import Listarprodutos from '../Components/listarProduto'
 
 
 export default function Home(){
