@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
-import listaProdutos from "../Components/listaProduto";
+import Listarprodutos from "../components/ListarProdutos";
 
-export default function App() {
-  
-  const [lista, setLista] = useState([]);
 
-  useEffect(() => { 
-    const receberListaProdutos = async () => {
-        try{
-        const resposta = await fetch('https://fakestoreapi.com/products');
-        const dados = await resposta.json();
-        setLista(dados);
-    } catch{
-        console.error("conexão falhou");
-    }
-    }
-    receberListaProdutos();
-  }, []);
+export default function Home(){
 
-  return (
-    <>
-    <h1>Lista de Produtos</h1>
-    <listaProdutos produtos ={lista} />
-    </>
-  );
-}
+    
+    const [lista,setLista] = useState ([]);
+
+    useEffect(() => {
+        const receberListaProdutos = async() => {
+            try{
+                const resposta = await fetch('https://fakestoreapi.com/products');
+                const dados = await resposta.json();
+                setLista(dados);
+            } catch (erro) {
+               alert("A conexão com a API falhou!");
+            }
+        }
+        receberListaProdutos();
+    }, []);
+
+    return(
+        <>
+         <Listarprodutos produtos={lista}/>
+
+        </>
+    );
+    
+
+}  
